@@ -1,0 +1,161 @@
+<!Doctype html>
+<html>
+<head>
+	<style>
+		.hh{
+			height:1000px;
+			width:50%;
+			border:3px outset darkblue;
+			background-color: powderblue;
+			text-align: left;
+			margin: auto;
+			padding: 10px;
+		}
+	</style>
+	<title>HTML FORMS</title>
+</head>
+
+<body>
+
+<form name="f1" onsubmit="fun()">
+<div class="hh">
+<fieldset>
+	<legend><h1 style="color:Blue" >Basic Info</h1></legend>
+
+	FirstName: <input type="text" placeholder="Enter your first name" required id="fname" name="fname" pattern=[a-zA-Z]{3,} AUTOFOCUS><br><br>
+	LastName: <input type="text"  placeholder="Enter your last name"required id="lname" name="lname" pattern=[a-zA-Z]{3,}><br><br>
+	Email id: <input type="text"  placeholder="Enter your email-address" required  id="email" name="email"><br><br>
+	Phone number: <input type="text" placeholder="Enter your phone number" name ="ph" pattern=[0-9]{10} ><br><br>
+	Date Of Birth: <input type="date" placeholder="Enter your date of birth" required><br><br>
+	Age: <input type="Number" placeholder="Enter your age" name="age" maxlength="3" required><br><br>
+	
+	
+	<fieldset>
+	<legend><h3 style="color:Black" >Gender:</h3></legend>
+	<input type="radio" id="m" name="m" value="Male"><label>Male</label><br><br>
+		<input type="radio" id="f" name="f" value="Female"><label>Female</label><br<br>
+	</fieldset>
+	<br><br>
+	
+	State: <input type="text" name="state" value="TamilNadu" disabled><br><br>
+	<label>City</label>
+	<select name="City">
+	<option value="Chennai">Chennai</option>
+    <option value="Coimbatore">Coimbatore</option>
+    <option value="Erode">Erode</option>
+    <option value="Hosur">Hosur</option>
+  </select>
+  <br><br>
+	
+	<fieldset>
+	<legend><h3 style="color:Black" >Address:</h3></legend>
+	<textarea name="Address" rows="5" cols="50" placeholder="Enter your address" name="address" required></textarea><br><br>
+	</fieldset>
+	<br><br>
+<fieldset>
+<legend>Profile Photo:</legend><br>
+<input type="file" name="myfile">
+</fieldset><br>
+<label for="password">Password:</label>
+<input type="password" id="password" name="password"><br><br>
+<label for="confirm_password">Confirm Password:</label>
+<input type="password" id="confirm_password" name="confirm_password">
+</fieldset><br>
+<br><br>
+</div><br><br>
+<center><input type="checkbox" id="dec" name="dec">I Hereby Declare that the above given statements are true<br><br>
+<br><br><input type="button" value="Submit" onclick="fun()"></center>
+
+</form>
+<script>
+	function fun() {
+	var fname = document.forms[0]["fname"].value;
+	var lname = document.forms[0]["lname"].value;
+	var email = document.forms[0]["email"].value;
+	var password = document.forms[0]["password"].value;
+	var confirm_password = document.forms[0]["confirm_password"].value;
+	var agee=document.forms[0]["age"].value;
+	//var addr=document.forms[0]["address"].value;
+	//var gen1=document.forms[0]["m"].value;
+	//var gen2=document.forms[0]["f"].value;
+	var phn=document.forms[0]["ph"].value;
+	var gm=document.f1.m.value;
+   var gf=document.f1.f.value;
+   var d=document.f1.dec.value;
+   //var checkbox = document.getElementById("dec").checked;
+	
+	if (fname == "") {
+	alert("First Name must be filled out");
+	return false;
+	}
+	
+	if (lname == "") {
+	alert("Last Name must be filled out");
+	return false;
+	}
+	
+	
+	if (!email.match(/^\w+([\.-]?\w+)*@\w+([\.-]?\w+)*(\.\w{2,3})+$/)) {
+	alert("Enter the valid Email");
+	return false;
+	}
+	if (email=="") {
+	alert("Email must be filled out");
+	return false;
+	}
+
+	if(phn.length<10 || phn.length>10){
+		alert("Phone number should be of 10 digits");
+	return false;
+	}
+	//if(!phn.match([0-9]{10})){
+	//	alert("Phone number must be in given form");
+	//	return false;
+	//}
+	if(agee==""){
+		alert("Age must be filled out");
+		return false;
+	}
+
+	if(document.f1.m.checked==0 && document.f1.f.checked==0){
+		alert("Gender must be selected");
+		return false;
+	}
+
+	//if(addr==""){
+	//	alert("Address must be filled out");
+	//	return false;
+	//}
+	
+	if (password == "") {
+	alert("Password must be filled out");
+	return false;
+	}
+	if (password.length<8) {
+	alert("Password should be atleast 8");
+	return false;
+	}
+	
+	if (confirm_password == "") {
+	alert("Confirm Password must be filled out");
+	return false;
+	}
+	
+	if (password != confirm_password) {
+	alert("Passwords do not match");
+	return false;
+	}
+
+	//if(!checkbox){
+	//	alert("Declaration not done");
+	//	return false;
+	//}
+	
+	
+	alert("Registration Successful!");
+	
+	}
+	</script>
+</body>
+
+</html>
